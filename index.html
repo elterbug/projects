@@ -1,0 +1,71 @@
+<!doctype HTML>
+<style>
+    html,
+    body {
+    overflow: hidden;
+    }
+</style>
+
+<input style="z-index:1000;width:48%;height:200" type=button onclick="document.getElementById('ifr').style.display='block';setTimeout(() => {countdowntonew();}, (delays[0] * 1000)-3000);" value="start (pc)" />
+<input style="z-index:1000;width:48%;height:200" type=button onclick="document.getElementById('ifr').style.display='block';setTimeout(() => {countdowntonew();}, (delays[0] * 1000)-3000);isMobile=true;ifr.src = '0m.html';" value="mobile" />
+<iframe src='0.html' style='display:none; position: absolute;left:0;top:0;' width=101% height=101% id="ifr">
+</iframe>
+<div style='position: absolute;left:40%;top:10;color:white;-webkit-text-stroke-width: 3px;-webkit-text-stroke-color: black;font-size:100' id='cd'>
+    
+</div>
+
+<script>
+    // alert("hi");
+    var isMobile = false;
+    const ifr = document.getElementById('ifr');
+    const cd = document.getElementById('cd');
+    let idx = 0;
+    const delays = [10,15, 15,20, 15,30, 45,40, 35,20, 50,60,99999999];
+    // const delays = [1,1, 1,2, 1,3, 4,4, 3,2, 5,6,99999999];
+    /*how long it spends on __ project 
+    [applerun1, ticktick, 10,15
+    maze, theMouseGame, 15,20
+    -19, untitled-4, 15,30
+    happyFathersDay, progect, 45,40
+    lavaRun+, hydrocarbonModels, 35, 20
+    valentinesDayThing, MyMessageCo] 50, 60*/
+    // alert(delays[1])
+    // alert('hi');
+    
+
+    function neww(){
+        idx++;
+        if(isMobile){
+        ifr.src = idx+"m.html";
+
+        }else{
+        ifr.src = idx+".html";
+
+        }
+        setTimeout(() => {
+        // alert("hi");
+        // ifr.src = "https://www.youtube.com/";
+        if (idx <= delays.length){
+            // alert(idx+","+delays.length)
+            countdowntonew();
+        }
+        
+    }, (delays[idx] * 1000)-3000);
+    }
+
+
+    function countdowntonew(){
+        cd.innerHTML = '3';
+        setTimeout(() => {
+            cd.innerHTML = '2';
+        },1000);
+        setTimeout(() => {
+            cd.innerHTML = '1';
+        },2000);
+        setTimeout(() => {
+            cd.innerHTML = '';
+            neww()
+        },3000);
+        
+    }
+</script>
